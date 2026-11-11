@@ -1,0 +1,183 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --app-font: Arial, Helvetica, sans-serif;
+  --accent-rgb: 91, 104, 220;
+  --accent-color: rgb(var(--accent-rgb));
+  --accent-hover: rgb(68, 78, 180);
+  --border-color: #e3e5ed;
+  --text-muted: #858995;
+}
+
+body {
+  background-color: #ffffff;
+  font-family: var(--app-font);
+}
+
+/* Grundlayout */
+
+.app-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+/* Linker Bereich */
+
+.note-sidebar {
+  width: 350px;
+  min-width: 280px;
+  padding: 1.5rem;
+  border-right: 1px solid var(--border-color);
+  overflow-y: auto;
+  background-color: #fafaff;
+}
+
+.add-note-btn,
+.store-btn,
+.remove-btn {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--app-font);
+  transition: background-color 0.2s ease;
+}
+
+.add-note-btn:hover,
+.store-btn:hover,
+.remove-btn:hover {
+  background-color: var(--accent-hover);
+}
+
+.add-note-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 1.2rem 0.8rem;
+  font-size: 1rem;
+}
+
+/* Symbole */
+
+.action-icon {
+  width: 1.7rem;
+  height: 1.7rem;
+}
+
+.add-note-btn .action-icon {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
+/* Notizübersicht */
+
+.note-overview {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+.note-card {
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.07);
+  transition: background-color 0.2s ease;
+}
+
+.note-card:not(.active-card) {
+  cursor: pointer;
+}
+
+.active-card,
+.note-card:hover {
+  background-color: rgba(var(--accent-rgb), 0.09);
+}
+
+.card-heading {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.card-heading,
+.card-preview {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-preview {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.card-timestamp {
+  width: 100%;
+  margin-top: 0.8rem;
+  text-align: right;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-style: italic;
+}
+
+/* Editorbereich */
+
+.editor-area {
+  flex: 1;
+  min-width: 0;
+  padding: 2rem 1.8rem;
+}
+
+.editor-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 1.5rem;
+}
+
+#note-heading,
+#note-text {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-family: var(--app-font);
+  background: transparent;
+}
+
+#note-heading::placeholder,
+#note-text::placeholder {
+  color: #a0a3ad;
+}
+
+#note-heading {
+  font-size: 2.7rem;
+  font-weight: 700;
+}
+
+#note-text {
+  height: 80vh;
+  resize: none;
+  font-size: 1.3rem;
+  line-height: 1.6;
+}
+
+/* Aktionsbuttons */
+
+.store-btn,
+.remove-btn {
+  padding: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

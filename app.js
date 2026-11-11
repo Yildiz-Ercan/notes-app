@@ -1,4 +1,4 @@
-const noteOverview = document.querySelector(".note-overview");
+const noteOverviewEl = document.querySelector(".note-overview");
 
 function renderNote(note) {
   const noteEl = document.createElement("div");
@@ -17,11 +17,24 @@ function renderNote(note) {
   );
 
   noteEl.append(titleEl, contentEl, lastUpdatedEl);
-  noteOverview.append(noteEl);
+  noteOverviewEl.append(noteEl);
 }
 
 function displayNotes() {
+  notes = loadNotes();
+
+  if (!notes.length) {
+    document.querySelector("#popup").classList.add("active");
+    setTimeout(() => {
+      popup.classList.remove("active");
+    }, 8000);
+
+    return;
+  }
+
   notes.sort((a, b) => b.lastUpdated - a.lastUpdated);
+
+  noteOverviewEl.innerHTML = "";
 
   notes.forEach((note) => {
     renderNote(note);

@@ -43,7 +43,11 @@
             placeholder="Überschrift eingeben..."
           />
 
-          <button class="store-btn" aria-label="Notiz speichern">
+          <button
+            class="store-btn"
+            aria-label="Notiz speichern"
+            onclick="saveNote()"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -83,6 +87,17 @@
           placeholder="Fang an, deine Notizen aufzuschreiben..."
         ></textarea>
       </main>
+    </div>
+    <div id="popup" class="popup">
+      <p>
+        Es wurden keine Notizen gefunden im LocalStorage. Bitte erstelle eine
+        Notiz.
+      </p>
+      <button
+        onclick="document.querySelector('#popup').classList.remove('active')"
+      >
+        OK
+      </button>
     </div>
   </body>
 </html>

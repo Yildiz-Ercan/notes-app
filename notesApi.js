@@ -7,6 +7,12 @@ function saveNote() {
   const title = noteHeadingEl.value;
   const noteText = noteTextEl.value;
 
+  if (!title.trim() && !noteText.trim()) {
+    alert("Du kannst keine leere Notiz speichern");
+    emptyFields();
+    return;
+  }
+
   if (!title || !noteText) {
     alert("Deine Notiz muss aus einem Titel und einer Beschreibung bestehen.");
     return;

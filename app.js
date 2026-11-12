@@ -32,6 +32,8 @@ function emptyFields() {
 function displayNotes() {
   notes = loadNotes();
 
+  noteOverviewEl.innerHTML = "";
+
   if (!notes.length) {
     document.querySelector("#popup").classList.add("active");
     setTimeout(() => {
@@ -42,8 +44,6 @@ function displayNotes() {
   }
 
   notes.sort((a, b) => b.lastUpdated - a.lastUpdated);
-
-  noteOverviewEl.innerHTML = "";
 
   notes.forEach((note) => {
     renderNote(note);

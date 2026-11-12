@@ -21,6 +21,7 @@ function saveNote() {
 
   notes.push(note);
   saveNotesLocalStorage();
+  emptyFields();
   displayNotes();
 }
 

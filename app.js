@@ -20,6 +20,11 @@ function renderNote(note) {
   noteOverviewEl.append(noteEl);
 }
 
+function emptyFields() {
+  noteHeadingEl.value = "";
+  noteTextEl.value = "";
+}
+
 function displayNotes() {
   notes = loadNotes();
 

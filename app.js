@@ -1,4 +1,5 @@
 const noteOverviewEl = document.querySelector(".note-overview");
+const addNoteButtonEl = document.querySelector(".add-note-btn");
 let selectedNote = null;
 
 function renderNote(note) {
@@ -25,6 +26,7 @@ function renderNote(note) {
 function emptyFields() {
   noteHeadingEl.value = "";
   noteTextEl.value = "";
+  selectedNote = null;
 }
 
 function displayNotes() {
@@ -46,6 +48,10 @@ function displayNotes() {
   notes.forEach((note) => {
     renderNote(note);
   });
+}
+
+function addNewNote() {
+  emptyFields();
 }
 
 displayNotes();

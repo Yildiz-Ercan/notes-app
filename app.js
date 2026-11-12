@@ -1,8 +1,10 @@
 const noteOverviewEl = document.querySelector(".note-overview");
+let selectedNote = null;
 
 function renderNote(note) {
   const noteEl = document.createElement("div");
   noteEl.classList.add("note-card");
+  noteEl.id = note.id;
   const titleEl = document.createElement("h1");
   titleEl.classList.add("card-heading");
   const contentEl = document.createElement("p");
@@ -47,3 +49,11 @@ function displayNotes() {
 }
 
 displayNotes();
+
+noteOverviewEl.addEventListener("click", function (event) {
+  const noteCard = event.target.closest("div");
+  console.log("Die Id unserer note card: ", noteCard.id);
+  selectedNote = notes.find((note) => note.id === noteCard.id);
+  noteHeadingEl.value = selectedNote.title;
+  noteTextEl.value = selectedNote.content;
+});

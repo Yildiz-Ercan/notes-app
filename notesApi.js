@@ -12,14 +12,22 @@ function saveNote() {
     return;
   }
 
-  const note = {
-    title: title,
-    content: noteText,
-    id: crypto.randomUUID(),
-    lastUpdated: Date.now(),
-  };
+  if (!selectedNote) {
+    const note = {
+      title: title,
+      content: noteText,
+      id: crypto.randomUUID(),
+      lastUpdated: Date.now(),
+    };
 
-  notes.push(note);
+    notes.push(note);
+  } else {
+    const existingNote = notes.find((note) => note.id === selectedNote.id);
+    existingNote.title = title;
+    existingNote.content = noteText;
+    existingNote.lastUpdated = Date.now();
+  }
+
   saveNotesLocalStorage();
   emptyFields();
   displayNotes();

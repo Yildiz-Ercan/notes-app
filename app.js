@@ -54,6 +54,20 @@ function addNewNote() {
   emptyFields();
 }
 
+function deleteNote() {
+  if (!selectedNote) {
+    return;
+  }
+
+  notes = notes.filter((note) => {
+    return note.id !== selectedNote.id;
+  });
+
+  localStorage.setItem("notes", JSON.stringify(notes));
+  emptyFields();
+  displayNotes();
+}
+
 displayNotes();
 
 noteOverviewEl.addEventListener("click", function (event) {

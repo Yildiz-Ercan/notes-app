@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light dark" />
-    <title>Notiz App</title>
+    <title data-i18n="appTitle">Notiz App</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="language.js" defer></script>
     <script src="darkmode.js" defer></script>
     <script src="notesApi.js" defer></script>
     <script src="app.js" defer></script>
@@ -29,7 +30,7 @@
               d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          <span>Neue Notiz erstellen</span>
+          <span data-i18n="addNote">Neue Notiz erstellen</span>
         </button>
 
         <div class="note-overview"></div>
@@ -42,12 +43,14 @@
           <input
             type="text"
             id="note-heading"
+            data-i18n-placeholder="placeholderHeading"
             placeholder="Überschrift eingeben..."
           />
 
           <button
             class="store-btn"
             aria-label="Notiz speichern"
+            data-i18n-aria-label="saveNote"
             onclick="saveNote()"
           >
             <svg
@@ -69,6 +72,7 @@
           <button
             class="remove-btn"
             aria-label="Notiz löschen"
+            data-i18n-aria-label="deleteNote"
             onclick="deleteNote()"
           >
             <svg
@@ -112,12 +116,13 @@
 
         <textarea
           id="note-text"
+          data-i18n-placeholder="placeholderText"
           placeholder="Fang an, deine Notizen aufzuschreiben..."
         ></textarea>
       </main>
     </div>
     <div id="popup" class="popup">
-      <p>
+      <p data-i18n="noNotesFound">
         Es wurden keine Notizen gefunden im LocalStorage. Bitte erstelle eine
         Notiz.
       </p>

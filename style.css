@@ -6,15 +6,21 @@
 
 :root {
   --app-font: Arial, Helvetica, sans-serif;
-  --accent-rgb: 91, 104, 220;
-  --accent-color: rgb(var(--accent-rgb));
-  --accent-hover: rgb(68, 78, 180);
-  --border-color: #e3e5ed;
-  --text-muted: #858995;
+  --accent-color: light-dark(#5b68dc, #252525);
+  --accent-hover: light-dark(#444eb4, #252525);
+
+  --background: light-dark(#ffffff, #000000);
+  --sidebar-bg: light-dark(#fafaff, #171717);
+  --card-bg: light-dark(#ffffff, #252525);
+  --popup-bg: light-dark(#ffffff, #252525);
+  --border-color: light-dark(#e3e5ed, #383838);
+  --text-color: light-dark(#000000, #ffffff);
+  --text-muted: light-dark(#858995, #a0a0a0);
 }
 
 body {
-  background-color: #ffffff;
+  background-color: var(--background);
+  color: var(--text-color);
   font-family: var(--app-font);
 }
 
@@ -34,12 +40,13 @@ body {
   padding: 1.5rem;
   border-right: 1px solid var(--border-color);
   overflow-y: auto;
-  background-color: #fafaff;
+  background-color: var(--sidebar-bg);
 }
 
 .add-note-btn,
 .store-btn,
-.remove-btn {
+.remove-btn,
+.darkmode-btn {
   background-color: var(--accent-color);
   color: white;
   border: none;
@@ -51,7 +58,8 @@ body {
 
 .add-note-btn:hover,
 .store-btn:hover,
-.remove-btn:hover {
+.remove-btn:hover,
+.darkmode-btn:hover {
   background-color: var(--accent-hover);
 }
 
@@ -89,7 +97,7 @@ body {
 .note-card {
   padding: 1rem;
   border-radius: 8px;
-  background-color: white;
+  background-color: var(--card-bg);
   box-shadow: 0 2px 7px rgba(0, 0, 0, 0.07);
   transition: background-color 0.2s ease;
 }
@@ -175,14 +183,20 @@ body {
 /* Aktionsbuttons */
 
 .store-btn,
-.remove-btn {
+.remove-btn,
+.darkmode-btn {
   padding: 0.9rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+/* Popup */
+
 .popup {
+  background-color: var(--popup-bg);
+  color: var(--text-color);
+  box-shadow: 0 0 15px var(--border-color);
   display: none;
   position: fixed;
   bottom: 20px;
@@ -191,10 +205,23 @@ body {
   background: white;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 15px #999;
   z-index: 1000;
 }
 
 .popup.active {
   display: block;
+}
+
+/* Darkmode */
+
+.darkmode-btn[active="true"] {
+  box-shadow: 0 0 15px yellow;
+}
+
+.darkmode-btn svg {
+  fill: none;
+}
+
+.darkmode-btn[active="true"] svg {
+  fill: yellow;
 }

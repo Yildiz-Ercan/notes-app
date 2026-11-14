@@ -46,3 +46,10 @@ function saveNotesLocalStorage() {
 function loadNotes() {
   return JSON.parse(localStorage.getItem("notes")) || [];
 }
+
+noteHeadingEl.addEventListener("keydown", (event) => {
+  if (event.key === "Enter" || event.key === "Tab") {
+    event.preventDefault();
+    noteTextEl.focus();
+  }
+});

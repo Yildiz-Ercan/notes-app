@@ -1,9 +1,11 @@
 const noteHeadingEl = document.getElementById("note-heading");
 const noteTextEl = document.getElementById("note-text");
+let hasUnsavedChanges = false;
 
 let notes = [];
 
 function saveNote() {
+  hasUnsavedChanges = false;
   const title = noteHeadingEl.value;
   const noteText = noteTextEl.value;
 
@@ -47,9 +49,17 @@ function loadNotes() {
   return JSON.parse(localStorage.getItem("notes")) || [];
 }
 
+function checkUnsavedChanges() {
+  hasUnsavedChanges =
+    noteHeadingEl.value.trim() !== "" || noteTextEl.value.trim() !== "";
+}
+
 noteHeadingEl.addEventListener("keydown", (event) => {
   if (event.key === "Enter" || event.key === "Tab") {
     event.preventDefault();
     noteTextEl.focus();
   }
 });
+
+noteHeadingEl.addEventListener("input", checkUnsavedChanges);
+noteTextEl.addEventListener("input", checkUnsavedChanges);

@@ -1,5 +1,8 @@
 const noteOverviewEl = document.querySelector(".note-overview");
 const addNoteButtonEl = document.querySelector(".add-note-btn");
+const popupEl = document.getElementById("popup");
+const popupMessage = document.getElementById("popup-message");
+let popupTimer;
 let selectedNote = null;
 
 function renderNote(note) {
@@ -35,10 +38,11 @@ function displayNotes() {
   noteOverviewEl.innerHTML = "";
 
   if (!notes.length) {
-    document.querySelector("#popup").classList.add("active");
-    setTimeout(() => {
+    showPopup("noNotesFound");
+    clearTimeout(popupTimer);
+    popupTimer = setTimeout(() => {
       popup.classList.remove("active");
-    }, 8000);
+    }, 5000);
 
     return;
   }
@@ -51,6 +55,9 @@ function displayNotes() {
 }
 
 function addNewNote() {
+  if (reportUnsavedChanges("unsavedChanges")) {
+    return;
+  }
   emptyFields();
 }
 
@@ -68,11 +75,30 @@ function deleteNote() {
   displayNotes();
 }
 
+function showPopup(key) {
+  popupMessage.textContent = translations[language][key];
+  popup.classList.add("active");
+}
+
+function reportUnsavedChanges(key) {
+  if (hasUnsavedChanges) {
+    showPopup(key);
+    clearTimeout(popupTimer);
+    popupTimer = setTimeout(() => {
+      popup.classList.remove("active");
+    }, 5000);
+    return true;
+  }
+  return false;
+}
+
 displayNotes();
 
 noteOverviewEl.addEventListener("click", function (event) {
+  if (reportUnsavedChanges("unsavedChanges")) {
+    return;
+  }
   const noteCard = event.target.closest("div");
-  console.log("Die Id unserer note card: ", noteCard.id);
   selectedNote = notes.find((note) => note.id === noteCard.id);
   noteHeadingEl.value = selectedNote.title;
   noteTextEl.value = selectedNote.content;

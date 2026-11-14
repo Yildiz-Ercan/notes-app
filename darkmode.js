@@ -6,7 +6,6 @@ function toggleDarkmode() {
   darkmodeButton.setAttribute("active", darkmodeButton.active);
   colorScheme.content = darkmodeButton.active ? "dark" : "light";
   saveColorScheme(colorScheme.content);
-  console.log(darkmodeButton.active);
 }
 
 function saveColorScheme(colorScheme) {

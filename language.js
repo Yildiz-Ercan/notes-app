@@ -8,6 +8,7 @@ const translations = {
     placeholderText: "Schreibe deine Notiz...",
     noNotesFound:
       "Es wurden keine Notizen im LocalStorage gefunden. Bitte erstelle eine Notiz.",
+    unsavedChanges: "Deine Änderungen sind noch nicht gespeichert!",
   },
 
   en: {
@@ -18,8 +19,11 @@ const translations = {
     placeholderHeading: "Write your heading...",
     placeholderText: "Write your note...",
     noNotesFound: "No notes were found in LocalStorage. Please create a note.",
+    unsavedChanges: "Your changes have not been saved yet!",
   },
 };
+
+let language = detectLanguage();
 
 function detectLanguage() {
   const browserLanguage = navigator.language;
@@ -47,8 +51,6 @@ function translatePage(language) {
 }
 
 function loadLanguage() {
-  const language = detectLanguage();
-
   translatePage(language);
 }
 

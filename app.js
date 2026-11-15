@@ -17,7 +17,10 @@ function renderNote(note) {
   lastUpdatedEl.classList.add("card-timestamp");
 
   titleEl.textContent = note.title;
-  contentEl.textContent = note.content;
+  contentEl.textContent = new DOMParser().parseFromString(
+    note.content,
+    "text/html",
+  ).body.textContent;
   lastUpdatedEl.textContent = new Date(note.lastUpdated).toLocaleString(
     "de-DE",
   );
@@ -28,7 +31,7 @@ function renderNote(note) {
 
 function emptyFields() {
   noteHeadingEl.value = "";
-  noteTextEl.value = "";
+  noteTextEl.innerHTML = "";
   selectedNote = null;
 }
 
@@ -99,7 +102,16 @@ noteOverviewEl.addEventListener("click", function (event) {
     return;
   }
   const noteCard = event.target.closest("div");
+
+  if (!noteCard) {
+    return;
+  }
   selectedNote = notes.find((note) => note.id === noteCard.id);
+
+  if (!selectedNote) {
+    return;
+  }
+
   noteHeadingEl.value = selectedNote.title;
-  noteTextEl.value = selectedNote.content;
+  noteTextEl.innerHTML = selectedNote.content;
 });

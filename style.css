@@ -174,10 +174,54 @@ body {
 }
 
 #note-text {
-  height: 80vh;
-  resize: none;
+  min-height: 80vh;
   font-size: 1.3rem;
   line-height: 1.6;
+  white-space: pre-wrap;
+  color: var(--text-color);
+}
+
+#note-text:empty::before {
+  content: attr(data-placeholder);
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+/* Format-Toolbar */
+
+.format-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 0;
+  margin-bottom: 0.8rem;
+}
+
+.format-toolbar button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-color);
+  font-family: var(--app-font);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.format-toolbar button:hover {
+  background-color: var(--border-color);
+}
+
+.action-format-icon {
+  width: 1.3rem;
+  height: 1.3rem;
+  flex-shrink: 0;
 }
 
 /* Aktionsbuttons */

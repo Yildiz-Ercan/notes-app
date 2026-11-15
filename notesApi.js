@@ -5,20 +5,22 @@ let hasUnsavedChanges = false;
 let notes = [];
 
 function saveNote() {
-  hasUnsavedChanges = false;
   const title = noteHeadingEl.value;
-  const noteText = noteTextEl.value;
+  const noteText = noteTextEl.innerHTML;
+  const plainText = noteTextEl.innerText.trim();
 
-  if (!title.trim() && !noteText.trim()) {
+  if (!title.trim() && !plainText) {
     alert("Du kannst keine leere Notiz speichern");
     emptyFields();
     return;
   }
 
-  if (!title || !noteText) {
+  if (!title || !plainText) {
     alert("Deine Notiz muss aus einem Titel und einer Beschreibung bestehen.");
     return;
   }
+
+  hasUnsavedChanges = false;
 
   if (!selectedNote) {
     const note = {
@@ -51,7 +53,7 @@ function loadNotes() {
 
 function checkUnsavedChanges() {
   hasUnsavedChanges =
-    noteHeadingEl.value.trim() !== "" || noteTextEl.value.trim() !== "";
+    noteHeadingEl.value.trim() !== "" || noteTextEl.innerText.trim() !== "";
 }
 
 noteHeadingEl.addEventListener("keydown", (event) => {

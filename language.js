@@ -46,7 +46,12 @@ function translatePage(language) {
 
   document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
     const key = element.dataset.i18nPlaceholder;
-    element.placeholder = translations[language][key];
+
+    if (element.hasAttribute("contenteditable")) {
+      element.dataset.placeholder = translations[language][key];
+    } else {
+      element.placeholder = translations[language][key];
+    }
   });
 }
 

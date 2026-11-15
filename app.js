@@ -80,7 +80,7 @@ function deleteNote() {
 
 function showPopup(key) {
   popupMessage.textContent = translations[language][key];
-  popup.classList.add("active");
+  popupEl.classList.add("active");
 }
 
 function reportUnsavedChanges(key) {
@@ -88,7 +88,7 @@ function reportUnsavedChanges(key) {
     showPopup(key);
     clearTimeout(popupTimer);
     popupTimer = setTimeout(() => {
-      popup.classList.remove("active");
+      popupEl.classList.remove("active");
     }, 5000);
     return true;
   }
@@ -101,7 +101,7 @@ noteOverviewEl.addEventListener("click", function (event) {
   if (reportUnsavedChanges("unsavedChanges")) {
     return;
   }
-  const noteCard = event.target.closest("div");
+  const noteCard = event.target.closest(".note-card");
 
   if (!noteCard) {
     return;
@@ -114,4 +114,17 @@ noteOverviewEl.addEventListener("click", function (event) {
 
   noteHeadingEl.value = selectedNote.title;
   noteTextEl.innerHTML = selectedNote.content;
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Delete") {
+    if (
+      event.target.tagName === "INPUT" ||
+      event.target.tagName === "TEXTAREA" ||
+      event.target.isContentEditable
+    ) {
+      return;
+    }
+    deleteNote();
+  }
 });

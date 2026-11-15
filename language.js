@@ -9,6 +9,9 @@ const translations = {
     noNotesFound:
       "Es wurden keine Notizen im LocalStorage gefunden. Bitte erstelle eine Notiz.",
     unsavedChanges: "Deine Änderungen sind noch nicht gespeichert!",
+    emptyNote: "Du kannst keine leere Notiz speichern",
+    missingFields:
+      "Deine Notiz muss aus einem Titel und einer Beschreibung bestehen.",
   },
 
   en: {
@@ -20,6 +23,8 @@ const translations = {
     placeholderText: "Write your note...",
     noNotesFound: "No notes were found in LocalStorage. Please create a note.",
     unsavedChanges: "Your changes have not been saved yet!",
+    emptyNote: "You can't save empty notes!",
+    missingFields: "Your note must consist of a title and a description.",
   },
 };
 
@@ -57,6 +62,10 @@ function translatePage(language) {
 
 function loadLanguage() {
   translatePage(language);
+}
+
+function t(key) {
+  return translations[language][key] ?? translations.en[key] ?? key;
 }
 
 addEventListener("DOMContentLoaded", loadLanguage);

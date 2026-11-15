@@ -10,13 +10,13 @@ function saveNote() {
   const plainText = noteTextEl.innerText.trim();
 
   if (!title.trim() && !plainText) {
-    alert("Du kannst keine leere Notiz speichern");
+    alert(t("emptyNote"));
     emptyFields();
     return;
   }
 
   if (!title || !plainText) {
-    alert("Deine Notiz muss aus einem Titel und einer Beschreibung bestehen.");
+    alert(t("missingFields"));
     return;
   }
 

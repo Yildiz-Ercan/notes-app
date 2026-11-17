@@ -62,6 +62,13 @@ function checkUnsavedChanges() {
     noteHeadingEl.value.trim() !== "" || noteTextEl.innerText.trim() !== "";
 }
 
+document.addEventListener("keydown", (event) => {
+  if ((event.ctrlKey || event.metaKey) && event.key === "s") {
+    event.preventDefault();
+    saveNote();
+  }
+});
+
 noteHeadingEl.addEventListener("keydown", (event) => {
   if (event.key === "Enter" || event.key === "Tab") {
     event.preventDefault();

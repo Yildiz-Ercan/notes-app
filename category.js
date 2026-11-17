@@ -23,6 +23,28 @@ const Category = {
   OTHER: "Other",
 };
 
+const CategoryColor = {
+  NONE: "#9E9E9E",
+  WORK: "#4285F4",
+  PERSONAL: "#AB47BC",
+  SHOPPING: "#EC407A",
+  HOUSEWORK: "#8D6E63",
+  FITNESS: "#43A047",
+  HEALTH: "#E53935",
+  GAMES: "#7E57C2",
+  HOBBIES: "#26A69A",
+  FINANCE: "#F9A825",
+  EDUCATION: "#5C6BC0",
+  TRAVEL: "#29B6F6",
+  FOOD: "#FF7043",
+  FAMILY: "#D81B60",
+  SOCIAL: "#66BB6A",
+  IDEAS: "#FFA726",
+  PROJECTS: "#78909C",
+  REMINDERS: "#D4AC0D",
+  OTHER: "#757575",
+};
+
 function renderCategoryDropdown() {
   const selectCategoryEL = document.createElement("select");
   selectCategoryEL.name = "category";

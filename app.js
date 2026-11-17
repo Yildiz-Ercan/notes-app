@@ -15,6 +15,11 @@ function renderNote(note) {
   contentEl.classList.add("card-preview");
   const lastUpdatedEl = document.createElement("p");
   lastUpdatedEl.classList.add("card-timestamp");
+  const categoryColor = CategoryColor[note.category];
+
+  if (categoryColor) {
+    noteEl.style.setProperty("--category-color", categoryColor);
+  }
 
   titleEl.textContent = note.title;
   contentEl.textContent = new DOMParser().parseFromString(

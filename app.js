@@ -100,6 +100,7 @@ function deleteNote() {
   });
 
   localStorage.setItem("notes", JSON.stringify(notes));
+  playSound("delete");
   emptyFields();
   displayNotes();
 }
@@ -107,6 +108,8 @@ function deleteNote() {
 function showPopup(key) {
   popupMessage.textContent = translations[language][key];
   popupEl.classList.add("active");
+
+  playSound("notification");
 }
 
 function reportUnsavedChanges(key) {
@@ -120,8 +123,6 @@ function reportUnsavedChanges(key) {
   }
   return false;
 }
-
-displayNotes();
 
 noteOverviewEl.addEventListener("click", function (event) {
   if (reportUnsavedChanges("unsavedChanges")) {
@@ -157,3 +158,5 @@ document.addEventListener("keydown", (event) => {
     deleteNote();
   }
 });
+
+displayNotes();

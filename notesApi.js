@@ -3,6 +3,12 @@ const noteTextEl = document.getElementById("note-text");
 let hasUnsavedChanges = false;
 
 let notes = [];
+const sounds = {
+  save: new Audio("assets/sounds/save.mp3"),
+  delete: new Audio("assets/sounds/delete.mp3"),
+  notification: new Audio("assets/sounds/notification.mp3"),
+  startup: new Audio("assets/sounds/startup.mp3"),
+};
 
 function saveNote() {
   const title = noteHeadingEl.value;
@@ -14,13 +20,15 @@ function saveNote() {
       : document.querySelector(".select-category").value;
 
   if (!title.trim() && !plainText) {
-    alert(t("emptyNote"));
+    playSound("notification");
+    showPopup("emptyNote");
     emptyFields();
     return;
   }
 
   if (!title || !plainText) {
-    alert(t("missingFields"));
+    playSound("notification");
+    showPopup("missingFields");
     return;
   }
 
@@ -45,6 +53,7 @@ function saveNote() {
   }
 
   saveNotesLocalStorage();
+  playSound("save");
   emptyFields();
   displayNotes();
 }
@@ -60,6 +69,17 @@ function loadNotes() {
 function checkUnsavedChanges() {
   hasUnsavedChanges =
     noteHeadingEl.value.trim() !== "" || noteTextEl.innerText.trim() !== "";
+}
+
+function playSound(type) {
+  const sound = sounds[type];
+
+  if (!sound) {
+    return;
+  }
+
+  sound.currentTime = 0;
+  sound.play();
 }
 
 document.addEventListener("keydown", (event) => {

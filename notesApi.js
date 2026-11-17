@@ -8,6 +8,10 @@ function saveNote() {
   const title = noteHeadingEl.value;
   const noteText = noteTextEl.innerHTML;
   const plainText = noteTextEl.innerText.trim();
+  const selectedCategory =
+    document.querySelector(".select-category").value === CATEGORY_PLACEHOLDER
+      ? null
+      : document.querySelector(".select-category").value;
 
   if (!title.trim() && !plainText) {
     alert(t("emptyNote"));
@@ -28,6 +32,7 @@ function saveNote() {
       content: noteText,
       id: crypto.randomUUID(),
       lastUpdated: Date.now(),
+      category: selectedCategory,
     };
 
     notes.push(note);
@@ -36,6 +41,7 @@ function saveNote() {
     existingNote.title = title;
     existingNote.content = noteText;
     existingNote.lastUpdated = Date.now();
+    existingNote.category = selectedCategory;
   }
 
   saveNotesLocalStorage();

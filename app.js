@@ -33,6 +33,7 @@ function emptyFields() {
   noteHeadingEl.value = "";
   noteTextEl.innerHTML = "";
   selectedNote = null;
+  document.querySelector(".select-category").value = CATEGORY_PLACEHOLDER;
 }
 
 function displayNotes() {
@@ -111,6 +112,9 @@ noteOverviewEl.addEventListener("click", function (event) {
   if (!selectedNote) {
     return;
   }
+
+  document.querySelector(".select-category").value =
+    selectedNote.category || CATEGORY_PLACEHOLDER;
 
   noteHeadingEl.value = selectedNote.title;
   noteTextEl.innerHTML = selectedNote.content;

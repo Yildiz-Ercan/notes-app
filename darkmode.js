@@ -9,12 +9,11 @@ function toggleDarkmode() {
 }
 
 function saveColorScheme(colorScheme) {
-  localStorage.setItem("colorScheme", JSON.stringify(colorScheme));
+  localStorage.setItem("colorScheme", colorScheme);
 }
 
 function loadColorScheme() {
-  colorScheme.content =
-    JSON.parse(localStorage.getItem("colorScheme")) || "light";
+  colorScheme.content = localStorage.getItem("colorScheme") || "light";
   syncDarkmodeButton();
 }
 

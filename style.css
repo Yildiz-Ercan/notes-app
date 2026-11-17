@@ -24,6 +24,73 @@ body {
   font-family: var(--app-font);
 }
 
+/* Welcome Screen */
+.welcome-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #151719;
+  color: #f4e9d8;
+  transition:
+    opacity 0.7s ease,
+    visibility 0.7s ease;
+}
+
+.welcome-content {
+  text-align: center;
+  padding: 24px;
+}
+
+.welcome-icon {
+  font-size: 42px;
+  color: #d6b58a;
+  margin-bottom: 20px;
+}
+
+.welcome-content h1 {
+  font-size: 52px;
+  letter-spacing: 12px;
+  margin: 0;
+}
+
+.welcome-content p {
+  color: #a9a9a9;
+  font-size: 14px;
+  margin-top: 16px;
+  letter-spacing: 1px;
+}
+
+.welcome-prompt {
+  display: inline-block;
+  margin-top: 65px;
+  padding: 16px 28px;
+  border: 1px solid #9a805d;
+  border-radius: 6px;
+  color: #e7d5b7;
+  font-size: 13px;
+  letter-spacing: 2px;
+  animation: pulse 2s infinite;
+}
+
+.welcome-screen.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
 /* Grundlayout */
 
 .app-container {

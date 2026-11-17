@@ -1,9 +1,27 @@
+const welcomeScreenEl = document.querySelector(".welcome-screen");
 const noteOverviewEl = document.querySelector(".note-overview");
 const addNoteButtonEl = document.querySelector(".add-note-btn");
 const popupEl = document.getElementById("popup");
 const popupMessage = document.getElementById("popup-message");
+const today = new Date().toLocaleDateString("en-CA");
 let popupTimer;
 let selectedNote = null;
+
+if (localStorage.getItem("lastWelcomeDate") === today) {
+  welcomeScreenEl.remove();
+} else {
+  document.addEventListener("keydown", handleWelcome);
+}
+
+function handleWelcome(event) {
+  if (event.key !== "Enter") return;
+
+  localStorage.setItem("lastWelcomeDate", today);
+  welcomeScreenEl.classList.add("is-hidden");
+  playSound("startup");
+
+  document.removeEventListener("keydown", handleWelcome);
+}
 
 function renderNote(note) {
   const noteEl = document.createElement("div");

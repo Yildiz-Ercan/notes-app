@@ -90,7 +90,7 @@ document.addEventListener("keydown", (event) => {
 });
 
 noteHeadingEl.addEventListener("keydown", (event) => {
-  if (event.key === "Enter" || event.key === "Tab") {
+  if (event.key === "Enter") {
     event.preventDefault();
     noteTextEl.focus();
   }

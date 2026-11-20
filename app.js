@@ -54,6 +54,7 @@ function renderNote(note) {
 
 function emptyFields() {
   noteHeadingEl.value = "";
+  noteHeadingEl.focus();
   noteTextEl.innerHTML = "";
   selectedNote = null;
   document.querySelector(".select-category").value = CATEGORY_PLACEHOLDER;
@@ -176,5 +177,7 @@ document.addEventListener("keydown", (event) => {
     deleteNote();
   }
 });
+
+document.addEventListener("DOMContentLoaded", () => noteHeadingEl.focus());
 
 displayNotes();

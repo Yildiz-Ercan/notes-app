@@ -1,0 +1,66 @@
+/* Notizübersicht */
+.note-overview {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+/* Notizkarte */
+.note-card {
+  position: relative;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: var(--card-bg);
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.07);
+  transition: background-color 0.2s ease;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-top: 40px solid var(--category-color);
+    border-left: 40px solid transparent;
+    border-top-right-radius: 8px;
+  }
+
+  &:not(&--active) {
+    cursor: pointer;
+  }
+
+  &:hover,
+  &--active {
+    background-color: rgba(var(--accent-rgb), 0.09);
+  }
+
+  &__heading {
+    width: 100%;
+    margin-bottom: 0.5rem;
+    font-size: 1.35rem;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__preview {
+    width: 100%;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__timestamp {
+    width: 100%;
+    margin-top: 0.8rem;
+    text-align: right;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-style: italic;
+  }
+}

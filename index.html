@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light dark" />
     <title data-i18n="appTitle">Notiz App</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <script src="category.js" defer></script>
     <script src="richTextEditor.js" defer></script>
     <script src="language.js" defer></script>
@@ -15,24 +15,26 @@
   </head>
 
   <body>
-    <div class="welcome-screen">
-      <div class="welcome-content">
-        <div class="welcome-icon">✎</div>
-        <h1>Notes</h1>
-        <p>Your personal space for thoughts.</p>
-        <div class="welcome-prompt">PRESS ENTER TO CONTINUE</div>
+    <section class="welcome-screen">
+      <div class="welcome-screen__content">
+        <div class="welcome-screen__icon">✎</div>
+        <h1 class="welcome-screen__title">Notes</h1>
+        <p class="welcome-screen__description">
+          Your personal space for thoughts.
+        </p>
+        <div class="welcome-screen__prompt">PRESS ENTER TO CONTINUE</div>
       </div>
-    </div>
+    </section>
     <div class="app-container">
       <aside class="note-sidebar">
-        <button class="add-note-btn" onclick="addNewNote()">
+        <button class="button button--add-note" onclick="addNewNote()">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            class="action-icon"
+            class="button__icon"
           >
             <path
               stroke-linecap="round"
@@ -58,7 +60,7 @@
           />
 
           <button
-            class="store-btn"
+            class="button button--action"
             aria-label="Notiz speichern"
             data-i18n-aria-label="saveNote"
             onclick="saveNote()"
@@ -69,7 +71,7 @@
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="action-icon"
+              class="button__icon"
             >
               <path
                 stroke-linecap="round"
@@ -80,7 +82,7 @@
           </button>
 
           <button
-            class="remove-btn"
+            class="button button--action"
             aria-label="Notiz löschen"
             data-i18n-aria-label="deleteNote"
             onclick="deleteNote()"
@@ -91,7 +93,7 @@
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="action-icon"
+              class="button__icon"
             >
               <path
                 stroke-linecap="round"
@@ -102,7 +104,7 @@
           </button>
 
           <button
-            class="darkmode-btn"
+            class="button button--action button--darkmode"
             aria-label="Darkmode aktivieren"
             active="false"
             onclick="toggleDarkmode()"
@@ -113,7 +115,7 @@
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="action-icon"
+              class="button__icon"
             >
               <path
                 stroke-linecap="round"

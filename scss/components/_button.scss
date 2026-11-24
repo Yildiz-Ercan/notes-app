@@ -1,0 +1,40 @@
+.button {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--app-font);
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: var(--accent-hover);
+  }
+
+  &--add-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    width: 100%;
+    padding: 1.2rem 0.8rem;
+    font-size: 1rem;
+  }
+
+  &--action {
+    padding: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__icon {
+    width: 1.7rem;
+    height: 1.7rem;
+  }
+
+  &--add-note &__icon {
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+}

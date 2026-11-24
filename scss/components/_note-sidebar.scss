@@ -1,0 +1,8 @@
+.note-sidebar {
+  width: 350px;
+  min-width: 280px;
+  padding: 1.5rem;
+  border-right: 1px solid var(--border-color);
+  overflow-y: auto;
+  background-color: var(--sidebar-bg);
+}

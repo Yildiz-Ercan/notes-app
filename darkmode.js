@@ -1,5 +1,5 @@
-const colorScheme = document.querySelector("meta[name=color-scheme]");
-const darkmodeButton = document.querySelector(".darkmode-btn");
+const colorScheme = document.querySelector('meta[name="color-scheme"]');
+const darkmodeButton = document.querySelector(".button--darkmode");
 
 function toggleDarkmode() {
   darkmodeButton.active = !darkmodeButton.active;

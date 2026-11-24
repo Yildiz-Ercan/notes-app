@@ -1,0 +1,13 @@
+.button--darkmode {
+  &[active="true"] {
+    box-shadow: 0 0 15px yellow;
+  }
+
+  svg {
+    fill: none;
+  }
+
+  &[active="true"] svg {
+    fill: yellow;
+  }
+}

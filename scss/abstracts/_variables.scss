@@ -1,0 +1,33 @@
+// Theme colors
+$app-font: Arial, Helvetica, sans-serif;
+$accent-color: light-dark(#5b68dc, #252525);
+$accent-hover: light-dark(#444eb4, #252525);
+$background: light-dark(#ffffff, #000000);
+$sidebar-bg: light-dark(#fafaff, #171717);
+$card-bg: light-dark(#ffffff, #252525);
+$popup-bg: light-dark(#ffffff, #252525);
+$border-color: light-dark(#e3e5ed, #383838);
+$text-color: light-dark(#000000, #ffffff);
+$text-muted: light-dark(#858995, #a0a0a0);
+
+:root {
+  --app-font: #{$app-font};
+  --accent-color: #{$accent-color};
+  --accent-hover: #{$accent-hover};
+
+  --background: #{$background};
+  --sidebar-bg: #{$sidebar-bg};
+  --card-bg: #{$card-bg};
+  --popup-bg: #{$popup-bg};
+  --border-color: #{$border-color};
+  --text-color: #{$text-color};
+  --text-muted: #{$text-muted};
+}
+
+// Welcome Screen
+$welcome-background: #151719;
+$welcome-text: #f4e9d8;
+$welcome-icon: #d6b58a;
+$welcome-description: #a9a9a9;
+$welcome-prompt-border: #9a805d;
+$welcome-prompt-text: #e7d5b7;

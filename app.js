@@ -1,6 +1,6 @@
 const welcomeScreenEl = document.querySelector(".welcome-screen");
 const noteOverviewEl = document.querySelector(".note-overview");
-const addNoteButtonEl = document.querySelector(".add-note-btn");
+const addNoteButtonEl = document.querySelector(".button--add-note");
 const popupEl = document.getElementById("popup");
 const popupMessage = document.getElementById("popup-message");
 const today = new Date().toLocaleDateString("en-CA");
@@ -17,7 +17,7 @@ function handleWelcome(event) {
   if (event.key !== "Enter") return;
 
   localStorage.setItem("lastWelcomeDate", today);
-  welcomeScreenEl.classList.add("is-hidden");
+  welcomeScreenEl.classList.add("welcome-screen--hidden");
   playSound("startup");
 
   document.removeEventListener("keydown", handleWelcome);
@@ -28,11 +28,11 @@ function renderNote(note) {
   noteEl.classList.add("note-card");
   noteEl.id = note.id;
   const titleEl = document.createElement("h1");
-  titleEl.classList.add("card-heading");
+  titleEl.classList.add("note-card__heading");
   const contentEl = document.createElement("p");
-  contentEl.classList.add("card-preview");
+  contentEl.classList.add("note-card__preview");
   const lastUpdatedEl = document.createElement("p");
-  lastUpdatedEl.classList.add("card-timestamp");
+  lastUpdatedEl.classList.add("note-card__timestamp");
   const categoryColor = CategoryColor[note.category];
 
   if (categoryColor) {
@@ -58,6 +58,9 @@ function emptyFields() {
   noteTextEl.innerHTML = "";
   selectedNote = null;
   document.querySelector(".select-category").value = CATEGORY_PLACEHOLDER;
+  document.querySelectorAll(".note-card").forEach((card) => {
+    card.classList.remove("note-card--active");
+  });
 }
 
 function displayNotes() {
@@ -69,7 +72,7 @@ function displayNotes() {
     showPopup("noNotesFound");
     clearTimeout(popupTimer);
     popupTimer = setTimeout(() => {
-      popup.classList.remove("active");
+      popupEl.classList.remove("active");
     }, 5000);
 
     return;
@@ -147,16 +150,22 @@ noteOverviewEl.addEventListener("click", function (event) {
   if (reportUnsavedChanges("unsavedChanges")) {
     return;
   }
+
   const noteCard = event.target.closest(".note-card");
 
   if (!noteCard) {
     return;
   }
+
   selectedNote = notes.find((note) => note.id === noteCard.id);
 
   if (!selectedNote) {
     return;
   }
+
+  document.querySelectorAll(".note-card").forEach((card) => {
+    card.classList.toggle("note-card--active", card === noteCard);
+  });
 
   document.querySelector(".select-category").value =
     selectedNote.category || CATEGORY_PLACEHOLDER;

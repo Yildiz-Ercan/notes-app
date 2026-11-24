@@ -1,14 +1,25 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--text-color);
+  font-family: var(--app-font);
+}
+
 :root {
   --app-font: Arial, Helvetica, sans-serif;
   --accent-color: light-dark(#5b68dc, #252525);
   --accent-hover: light-dark(#444eb4, #252525);
-
   --background: light-dark(#ffffff, #000000);
   --sidebar-bg: light-dark(#fafaff, #171717);
   --card-bg: light-dark(#ffffff, #252525);
@@ -18,13 +29,6 @@
   --text-muted: light-dark(#858995, #a0a0a0);
 }
 
-body {
-  background-color: var(--background);
-  color: var(--text-color);
-  font-family: var(--app-font);
-}
-
-/* Welcome Screen */
 .welcome-screen {
   position: fixed;
   inset: 0;
@@ -34,36 +38,29 @@ body {
   align-items: center;
   background: #151719;
   color: #f4e9d8;
-  transition:
-    opacity 0.7s ease,
-    visibility 0.7s ease;
+  transition: opacity 0.7s ease, visibility 0.7s ease;
 }
-
-.welcome-content {
+.welcome-screen__content {
   text-align: center;
   padding: 24px;
 }
-
-.welcome-icon {
+.welcome-screen__icon {
   font-size: 42px;
   color: #d6b58a;
   margin-bottom: 20px;
 }
-
-.welcome-content h1 {
+.welcome-screen__title {
   font-size: 52px;
   letter-spacing: 12px;
   margin: 0;
 }
-
-.welcome-content p {
+.welcome-screen__description {
   color: #a9a9a9;
   font-size: 14px;
   margin-top: 16px;
   letter-spacing: 1px;
 }
-
-.welcome-prompt {
+.welcome-screen__prompt {
   display: inline-block;
   margin-top: 65px;
   padding: 16px 28px;
@@ -74,33 +71,20 @@ body {
   letter-spacing: 2px;
   animation: pulse 2s infinite;
 }
-
-.welcome-screen.is-hidden {
+.welcome-screen--hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
 }
 
 @keyframes pulse {
-  0%,
-  100% {
+  0%, 100% {
     opacity: 1;
   }
   50% {
     opacity: 0.45;
   }
 }
-
-/* Grundlayout */
-
-.app-container {
-  display: flex;
-  width: 100%;
-  height: 100vh;
-}
-
-/* Linker Bereich */
-
 .note-sidebar {
   width: 350px;
   min-width: 280px;
@@ -110,50 +94,7 @@ body {
   background-color: var(--sidebar-bg);
 }
 
-.add-note-btn,
-.store-btn,
-.remove-btn,
-.darkmode-btn {
-  background-color: var(--accent-color);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-family: var(--app-font);
-  transition: background-color 0.2s ease;
-}
-
-.add-note-btn:hover,
-.store-btn:hover,
-.remove-btn:hover,
-.darkmode-btn:hover {
-  background-color: var(--accent-hover);
-}
-
-.add-note-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  width: 100%;
-  padding: 1.2rem 0.8rem;
-  font-size: 1rem;
-}
-
-/* Symbole */
-
-.action-icon {
-  width: 1.7rem;
-  height: 1.7rem;
-}
-
-.add-note-btn .action-icon {
-  width: 1.4rem;
-  height: 1.4rem;
-}
-
 /* Notizübersicht */
-
 .note-overview {
   display: flex;
   flex-direction: column;
@@ -161,6 +102,7 @@ body {
   margin-top: 1.5rem;
 }
 
+/* Notizkarte */
 .note-card {
   position: relative;
   padding: 1rem;
@@ -169,7 +111,6 @@ body {
   box-shadow: 0 2px 7px rgba(0, 0, 0, 0.07);
   transition: background-color 0.2s ease;
 }
-
 .note-card::before {
   content: "";
   position: absolute;
@@ -181,36 +122,30 @@ body {
   border-left: 40px solid transparent;
   border-top-right-radius: 8px;
 }
-
-.note-card:not(.active-card) {
+.note-card:not(.note-card--active) {
   cursor: pointer;
 }
-
-.active-card,
-.note-card:hover {
+.note-card:hover, .note-card--active {
   background-color: rgba(var(--accent-rgb), 0.09);
 }
-
-.card-heading {
+.note-card__heading {
+  width: 100%;
+  margin-bottom: 0.5rem;
   font-size: 1.35rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-
-.card-heading,
-.card-preview {
-  width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
-.card-preview {
+.note-card__preview {
+  width: 100%;
   color: var(--text-muted);
   font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-
-.card-timestamp {
+.note-card__timestamp {
   width: 100%;
   margin-top: 0.8rem;
   text-align: right;
@@ -219,8 +154,60 @@ body {
   font-style: italic;
 }
 
-/* Editorbereich */
+.button {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--app-font);
+  transition: background-color 0.2s ease;
+}
+.button:hover {
+  background-color: var(--accent-hover);
+}
+.button--add-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 1.2rem 0.8rem;
+  font-size: 1rem;
+}
+.button--action {
+  padding: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.button__icon {
+  width: 1.7rem;
+  height: 1.7rem;
+}
+.button--add-note .button__icon {
+  width: 1.4rem;
+  height: 1.4rem;
+}
 
+.button--darkmode[active=true] {
+  box-shadow: 0 0 15px yellow;
+}
+.button--darkmode svg {
+  fill: none;
+}
+.button--darkmode[active=true] svg {
+  fill: yellow;
+}
+
+/* Grundlayout */
+.app-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+/* Editorbereich */
 .editor-area {
   flex: 1;
   min-width: 0;
@@ -268,7 +255,6 @@ body {
 }
 
 /* Format-Toolbar */
-
 .format-toolbar {
   display: flex;
   align-items: center;
@@ -304,19 +290,7 @@ body {
   flex-shrink: 0;
 }
 
-/* Aktionsbuttons */
-
-.store-btn,
-.remove-btn,
-.darkmode-btn {
-  padding: 0.9rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 /* Popup */
-
 .popup {
   background-color: var(--popup-bg);
   color: var(--text-color);
@@ -335,22 +309,7 @@ body {
   display: block;
 }
 
-/* Darkmode */
-
-.darkmode-btn[active="true"] {
-  box-shadow: 0 0 15px yellow;
-}
-
-.darkmode-btn svg {
-  fill: none;
-}
-
-.darkmode-btn[active="true"] svg {
-  fill: yellow;
-}
-
 /* Category Dropdown */
-
 .select-category {
   border: 2px dotted;
   height: 3.5rem;
@@ -359,3 +318,5 @@ body {
   margin-right: 2rem;
   text-align: center;
 }
+
+/*# sourceMappingURL=style.css.map */

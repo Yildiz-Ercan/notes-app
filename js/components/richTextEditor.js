@@ -1,5 +1,5 @@
 const noteEditorEl = document.getElementById("note-text");
-const formatButtons = document.querySelectorAll(".format-toolbar button");
+const formatButtons = document.querySelectorAll(".format-toolbar__button");
 
 formatButtons.forEach((button) => {
   button.addEventListener("mousedown", (event) => {

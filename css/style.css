@@ -258,6 +258,20 @@ body {
   white-space: pre-wrap;
   color: var(--text-color);
 }
+.editor__text ul,
+.editor__text ol {
+  padding-left: 2rem;
+  margin: 0.5rem 0;
+}
+.editor__text ul {
+  list-style-type: disc;
+}
+.editor__text ol {
+  list-style-type: decimal;
+}
+.editor__text li {
+  display: list-item;
+}
 .editor__text:empty::before {
   content: attr(data-placeholder);
   color: var(--text-muted);

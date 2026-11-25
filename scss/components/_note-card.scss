@@ -53,7 +53,7 @@
 
   &:hover,
   &--active {
-    background-color: rgba(var(--accent-rgb), 0.09);
+    background-color: var(--card-hover);
   }
 
   &__heading {

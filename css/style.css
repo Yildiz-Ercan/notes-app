@@ -37,6 +37,7 @@ body {
   --background: light-dark(#ffffff, #000000);
   --sidebar-bg: light-dark(#fafaff, #171717);
   --card-bg: light-dark(#ffffff, #252525);
+  --card-hover: light-dark(#eef0ff, #30313a);
   --popup-bg: light-dark(#ffffff, #252525);
   --popup-btn: light-dark(transparent, #252525);
   --popup-btn-hover: light-dark(#82b2eb, #353535);
@@ -159,7 +160,7 @@ body {
   cursor: pointer;
 }
 .note-card:hover, .note-card--active {
-  background-color: rgba(var(--accent-rgb), 0.09);
+  background-color: var(--card-hover);
 }
 .note-card__heading {
   width: 100%;

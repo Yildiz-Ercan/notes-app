@@ -72,7 +72,7 @@ function displayNotes() {
     showPopup("noNotesFound");
     clearTimeout(popupTimer);
     popupTimer = setTimeout(() => {
-      popupEl.classList.remove("active");
+      popupEl.classList.remove("popup--active");
     }, 5000);
 
     return;
@@ -128,10 +128,16 @@ function deleteNote() {
 }
 
 function showPopup(key) {
+  clearTimeout(popupTimer);
+
   popupMessage.textContent = translations[language][key];
-  popupEl.classList.add("active");
+  popupEl.classList.add("popup--active");
 
   playSound("notification");
+
+  popupTimer = setTimeout(() => {
+    popupEl.classList.remove("popup--active");
+  }, 5000);
 }
 
 function reportUnsavedChanges(key) {
@@ -139,7 +145,7 @@ function reportUnsavedChanges(key) {
     showPopup(key);
     clearTimeout(popupTimer);
     popupTimer = setTimeout(() => {
-      popupEl.classList.remove("active");
+      popupEl.classList.remove("popup--active");
     }, 5000);
     return true;
   }

@@ -1,0 +1,40 @@
+.editor {
+  &__toolbar {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 1.5rem;
+  }
+
+  &__title,
+  &__text {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-family: var(--app-font);
+    background: transparent;
+  }
+
+  &__title::placeholder {
+    color: #a0a3ad;
+  }
+
+  &__title {
+    font-size: 2.7rem;
+    font-weight: 700;
+  }
+
+  &__text {
+    min-height: 80vh;
+    font-size: 1.3rem;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    color: var(--text-color);
+  }
+
+  &__text:empty::before {
+    content: attr(data-placeholder);
+    color: var(--text-muted);
+    pointer-events: none;
+  }
+}

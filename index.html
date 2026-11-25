@@ -48,13 +48,12 @@
         <div class="note-overview"></div>
       </aside>
 
-      <main class="editor-area">
-        <span id="current-note-id"></span>
-
-        <div class="editor-toolbar">
+      <main class="editor-container">
+        <div class="editor__toolbar">
           <input
             type="text"
             id="note-heading"
+            class="editor__title"
             data-i18n-placeholder="placeholderHeading"
             placeholder="Überschrift eingeben..."
           />
@@ -64,6 +63,7 @@
             aria-label="Notiz speichern"
             data-i18n-aria-label="saveNote"
             onclick="saveNote()"
+            id="store-btn"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -86,6 +86,7 @@
             aria-label="Notiz löschen"
             data-i18n-aria-label="deleteNote"
             onclick="deleteNote()"
+            id="delete-btn"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -127,19 +128,35 @@
         </div>
 
         <div class="format-toolbar">
-          <button type="button" data-command="bold" title="Fett">
+          <button
+            type="button"
+            data-command="bold"
+            title="Fett"
+            class="format-toolbar__button"
+          >
             <strong>B</strong>
           </button>
-          <button type="button" data-command="italic" title="Kursiv">
+          <button
+            type="button"
+            data-command="italic"
+            title="Kursiv"
+            class="format-toolbar__button"
+          >
             <em>I</em>
           </button>
-          <button type="button" data-command="underline" title="Unterstrichen">
+          <button
+            type="button"
+            data-command="underline"
+            title="Unterstrichen"
+            class="format-toolbar__button"
+          >
             <u>U</u>
           </button>
           <button
             type="button"
             data-command="insertUnorderedList"
             title="Aufzählung"
+            class="format-toolbar__button"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -147,7 +164,7 @@
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="action-format-icon"
+              class="format-toolbar__icon"
             >
               <path
                 stroke-linecap="round"
@@ -160,6 +177,7 @@
             type="button"
             data-command="insertOrderedList"
             title="Nummerierte Liste"
+            class="format-toolbar__button"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -167,7 +185,7 @@
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="action-format-icon"
+              class="format-toolbar__icon"
             >
               <path
                 stroke-linecap="round"
@@ -180,7 +198,7 @@
 
         <div
           id="note-text"
-          class="note-text"
+          class="editor__text"
           contenteditable="true"
           data-i18n-placeholder="placeholderText"
           data-placeholder="Fang an, deine Notizen aufzuschreiben..."
@@ -193,7 +211,9 @@
         Notiz.
       </p>
       <button
-        onclick="document.querySelector('#popup').classList.remove('active')"
+        onclick="
+          document.querySelector('#popup').classList.remove('popup--active')
+        "
       >
         OK
       </button>

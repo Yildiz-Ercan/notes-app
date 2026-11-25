@@ -1,132 +1,14 @@
 @use "base/reset";
 @use "base/base";
 
+@use "layout/layout";
+
 @use "components/welcome-screen";
 @use "components/note-sidebar";
 @use "components/note-card";
 @use "components/button";
 @use "components/darkmode";
-
-/* Grundlayout */
-
-.app-container {
-  display: flex;
-  width: 100%;
-  height: 100vh;
-}
-
-/* Editorbereich */
-
-.editor-area {
-  flex: 1;
-  min-width: 0;
-  padding: 2rem 1.8rem;
-}
-
-.editor-toolbar {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  margin-bottom: 1.5rem;
-}
-
-#note-heading,
-#note-text {
-  width: 100%;
-  border: none;
-  outline: none;
-  font-family: var(--app-font);
-  background: transparent;
-}
-
-#note-heading::placeholder,
-#note-text::placeholder {
-  color: #a0a3ad;
-}
-
-#note-heading {
-  font-size: 2.7rem;
-  font-weight: 700;
-}
-
-#note-text {
-  min-height: 80vh;
-  font-size: 1.3rem;
-  line-height: 1.6;
-  white-space: pre-wrap;
-  color: var(--text-color);
-}
-
-#note-text:empty::before {
-  content: attr(data-placeholder);
-  color: var(--text-muted);
-  pointer-events: none;
-}
-
-/* Format-Toolbar */
-
-.format-toolbar {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.6rem 0;
-  margin-bottom: 0.8rem;
-}
-
-.format-toolbar button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  padding: 0.5rem;
-  border: none;
-  border-radius: 6px;
-  background: transparent;
-  color: var(--text-color);
-  font-family: var(--app-font);
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.format-toolbar button:hover {
-  background-color: var(--border-color);
-}
-
-.action-format-icon {
-  width: 1.3rem;
-  height: 1.3rem;
-  flex-shrink: 0;
-}
-
-/* Popup */
-
-.popup {
-  background-color: var(--popup-bg);
-  color: var(--text-color);
-  box-shadow: 0 0 15px var(--border-color);
-  display: none;
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 20px;
-  border-radius: 10px;
-  z-index: 1000;
-}
-
-.popup.active {
-  display: block;
-}
-
-/* Category Dropdown */
-
-.select-category {
-  border: 2px dotted;
-  height: 3.5rem;
-  width: fit-content;
-  font-size: 1rem;
-  margin-right: 2rem;
-  text-align: center;
-}
+@use "components/editor";
+@use "components/format-toolbar";
+@use "components/popup";
+@use "components/category";

@@ -1,5 +1,5 @@
-const editorToolbarEL = document.querySelector(".editor-toolbar");
-const storeBtnEL = document.querySelector(".store-btn");
+const editorToolbarEL = document.querySelector(".editor__toolbar");
+const storeBtnEL = document.getElementById("store-btn");
 const CATEGORY_PLACEHOLDER = "Choose Category";
 const Category = {
   NONE: "None",

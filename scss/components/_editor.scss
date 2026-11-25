@@ -25,7 +25,9 @@
   }
 
   &__text {
-    min-height: 80vh;
+    height: 60vh;
+    overflow: hidden;
+
     font-size: 1.3rem;
     line-height: 1.6;
     white-space: pre-wrap;

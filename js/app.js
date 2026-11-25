@@ -78,7 +78,6 @@ function displayNotes() {
     return;
   }
 
-  // latestCategory ermitteln durch latestNote
   const latestNote = notes.reduce((latest, note) => {
     return note.lastUpdated > latest.lastUpdated ? note : latest;
   });
@@ -87,16 +86,16 @@ function displayNotes() {
   notes.sort((a, b) => sortCategory(a, b));
 
   function sortCategory(a, b) {
-    // Kategorie der neuesten Note zuerst
+    if (a.category === b.category) {
+      return b.lastUpdated - a.lastUpdated;
+    }
+
     if (a.category === latestCategory) return -1;
     if (b.category === latestCategory) return 1;
 
-    // Nach Kategorie sortieren
     const categorySort = (a.category ?? "").localeCompare(b.category ?? "");
-
     if (categorySort !== 0) return categorySort;
 
-    // Neueste Note innerhalb der Kategorie zuerst
     return b.lastUpdated - a.lastUpdated;
   }
 

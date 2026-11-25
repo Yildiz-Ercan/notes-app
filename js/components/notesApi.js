@@ -15,9 +15,7 @@ function saveNote() {
   const noteText = noteTextEl.innerHTML;
   const plainText = noteTextEl.innerText.trim();
   const selectedCategory =
-    document.querySelector(".select-category").value === CATEGORY_PLACEHOLDER
-      ? null
-      : document.querySelector(".select-category").value;
+    document.querySelector(".select-category").value || "NONE";
 
   if (!title.trim() && !plainText) {
     playSound("notification");

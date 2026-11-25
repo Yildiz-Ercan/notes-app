@@ -2,47 +2,82 @@ const editorToolbarEL = document.querySelector(".editor__toolbar");
 const storeBtnEL = document.getElementById("store-btn");
 const CATEGORY_PLACEHOLDER = "Choose Category";
 const Category = {
-  NONE: "None",
-  WORK: "Work",
-  PERSONAL: "Personal",
-  SHOPPING: "Shopping",
-  HOUSEWORK: "Housework",
-  FITNESS: "Fitness",
-  HEALTH: "Health",
-  GAMES: "Games",
-  HOBBIES: "Hobbies",
-  FINANCE: "Finance",
-  EDUCATION: "Education",
-  TRAVEL: "Travel",
-  FOOD: "Food",
-  FAMILY: "Family",
-  SOCIAL: "Social",
-  IDEAS: "Ideas",
-  PROJECTS: "Projects",
-  REMINDERS: "Reminders",
-  OTHER: "Other",
-};
-
-const CategoryColor = {
-  NONE: "#9E9E9E",
-  WORK: "#4285F4",
-  PERSONAL: "#AB47BC",
-  SHOPPING: "#EC407A",
-  HOUSEWORK: "#8D6E63",
-  FITNESS: "#43A047",
-  HEALTH: "#E53935",
-  GAMES: "#7E57C2",
-  HOBBIES: "#26A69A",
-  FINANCE: "#F9A825",
-  EDUCATION: "#5C6BC0",
-  TRAVEL: "#29B6F6",
-  FOOD: "#FF7043",
-  FAMILY: "#D81B60",
-  SOCIAL: "#66BB6A",
-  IDEAS: "#FFA726",
-  PROJECTS: "#78909C",
-  REMINDERS: "#D4AC0D",
-  OTHER: "#757575",
+  NONE: {
+    label: "None",
+    color: "#9E9E9E",
+  },
+  WORK: {
+    label: "Work",
+    color: "#4285F4",
+  },
+  PERSONAL: {
+    label: "Personal",
+    color: "#AB47BC",
+  },
+  SHOPPING: {
+    label: "Shopping",
+    color: "#EC407A",
+  },
+  HOUSEWORK: {
+    label: "Housework",
+    color: "#8D6E63",
+  },
+  FITNESS: {
+    label: "Fitness",
+    color: "#43A047",
+  },
+  HEALTH: {
+    label: "Health",
+    color: "#E53935",
+  },
+  GAMES: {
+    label: "Games",
+    color: "#7E57C2",
+  },
+  HOBBIES: {
+    label: "Hobbies",
+    color: "#26A69A",
+  },
+  FINANCE: {
+    label: "Finance",
+    color: "#F9A825",
+  },
+  EDUCATION: {
+    label: "Education",
+    color: "#5C6BC0",
+  },
+  TRAVEL: {
+    label: "Travel",
+    color: "#29B6F6",
+  },
+  FOOD: {
+    label: "Food",
+    color: "#FF7043",
+  },
+  FAMILY: {
+    label: "Family",
+    color: "#D81B60",
+  },
+  SOCIAL: {
+    label: "Social",
+    color: "#66BB6A",
+  },
+  IDEAS: {
+    label: "Ideas",
+    color: "#FFA726",
+  },
+  PROJECTS: {
+    label: "Projects",
+    color: "#78909C",
+  },
+  REMINDERS: {
+    label: "Reminders",
+    color: "#D4AC0D",
+  },
+  OTHER: {
+    label: "Other",
+    color: "#757575",
+  },
 };
 
 function renderCategoryDropdown() {
@@ -54,7 +89,7 @@ function renderCategoryDropdown() {
   Object.entries(Category).forEach((element) => {
     const selectCategoryOptionEL = document.createElement("option");
     selectCategoryOptionEL.value = element[0];
-    selectCategoryOptionEL.textContent = element[1];
+    selectCategoryOptionEL.textContent = element[1].label;
     selectCategoryEL.append(selectCategoryOptionEL);
   });
 
@@ -63,7 +98,7 @@ function renderCategoryDropdown() {
 
 function createPlaceholderOption() {
   const selectCategoryOptionEL = document.createElement("option");
-  selectCategoryOptionEL.value = CATEGORY_PLACEHOLDER;
+  selectCategoryOptionEL.value = "";
   selectCategoryOptionEL.textContent = CATEGORY_PLACEHOLDER;
   selectCategoryOptionEL.disabled = true;
   selectCategoryOptionEL.selected = true;

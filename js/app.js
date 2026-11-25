@@ -33,7 +33,7 @@ function renderNote(note) {
   contentEl.classList.add("note-card__preview");
   const lastUpdatedEl = document.createElement("p");
   lastUpdatedEl.classList.add("note-card__timestamp");
-  const categoryColor = CategoryColor[note.category];
+  const categoryColor = Category[note.category]?.color ?? Category.NONE.color;
 
   if (categoryColor) {
     noteEl.style.setProperty("--category-color", categoryColor);
@@ -57,7 +57,7 @@ function emptyFields() {
   noteHeadingEl.focus();
   noteTextEl.innerHTML = "";
   selectedNote = null;
-  document.querySelector(".select-category").value = CATEGORY_PLACEHOLDER;
+  document.querySelector(".select-category").value = "";
   document.querySelectorAll(".note-card").forEach((card) => {
     card.classList.remove("note-card--active");
   });
@@ -174,7 +174,7 @@ noteOverviewEl.addEventListener("click", function (event) {
   });
 
   document.querySelector(".select-category").value =
-    selectedNote.category || CATEGORY_PLACEHOLDER;
+    selectedNote.category || "NONE";
 
   noteHeadingEl.value = selectedNote.title;
   noteTextEl.innerHTML = selectedNote.content;

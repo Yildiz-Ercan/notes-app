@@ -1,15 +1,16 @@
 .popup {
   background-color: var(--popup-bg);
-  color: var(--text-color);
+  color: var(--text-muted);
+  font-weight: 400;
   box-shadow: 0 0 15px var(--border-color);
   display: none;
   position: fixed;
-  bottom: 20px;
+  bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
   height: auto;
   padding: 20px 20px 8px;
-  border: 1px solid #2a79d8;
+  border: 1px solid var(--popup-border);
   border-radius: 10px;
   z-index: 1000;
 
@@ -19,8 +20,9 @@
     width: 4rem;
     height: 2rem;
     border-radius: 6px;
-    color: var(--text-color);
-    border: 2px solid #2a79d8;
+    color: #fff;
+    font-weight: 400;
+    border: 1px solid var(--popup-border);
     background: var(--popup-btn);
     cursor: pointer;
     transition: background 0.2s ease;

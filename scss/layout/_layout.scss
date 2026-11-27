@@ -9,7 +9,10 @@
 /* Editorbereich */
 
 .editor-container {
+  display: flex;
+  flex-direction: column;
   flex: 1;
   min-width: 0;
-  padding: 2rem 1.8rem;
+  padding: 2rem 1.8rem 1.2rem;
+  background-color: var(--editor-bg);
 }

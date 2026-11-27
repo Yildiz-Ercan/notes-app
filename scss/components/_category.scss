@@ -1,8 +1,23 @@
 .select-category {
-  border: 2px dotted;
   height: 3.5rem;
   width: fit-content;
-  font-size: 1rem;
   margin-right: 2rem;
+  padding: 0 0.85rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  font-family: var(--app-font);
+  font-size: 1rem;
   text-align: center;
+
+  &:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+  }
+
+  option {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+  }
 }

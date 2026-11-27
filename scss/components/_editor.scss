@@ -3,7 +3,10 @@
     display: flex;
     align-items: center;
     gap: 0.7rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    background-color: var(--sidebar-bg);
   }
 
   &__title,
@@ -15,19 +18,21 @@
     background: transparent;
   }
 
-  &__title::placeholder {
-    color: #a0a3ad;
-  }
-
   &__title {
     font-size: 2.7rem;
-    font-weight: 700;
+    font-weight: 400;
   }
 
   &__text {
-    height: 60vh;
-    overflow: hidden;
-
+    flex: 1;
+    min-height: 0;
+    height: auto;
+    overflow: auto;
+    padding: 1rem;
+    border: 1px solid
+      color-mix(in srgb, var(--border-color) 80%, var(--text-color) 20%);
+    border-radius: 8px;
+    background-color: var(--sidebar-bg);
     font-size: 1.3rem;
     line-height: 1.6;
     white-space: pre-wrap;
@@ -57,4 +62,9 @@
     color: var(--text-muted);
     pointer-events: none;
   }
+}
+
+.editor__title::placeholder {
+  color: var(--text-muted);
+  opacity: 1;
 }

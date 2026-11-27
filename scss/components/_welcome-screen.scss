@@ -54,6 +54,10 @@
     visibility: hidden;
     pointer-events: none;
   }
+
+  &__prompt-mobile {
+    display: none;
+  }
 }
 
 @keyframes pulse {
@@ -64,5 +68,15 @@
 
   50% {
     opacity: 0.45;
+  }
+}
+
+@media (max-width: 767px) {
+  .welcome-screen__prompt-desktop {
+    display: none;
+  }
+
+  .welcome-screen__prompt-mobile {
+    display: inline;
   }
 }

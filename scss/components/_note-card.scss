@@ -84,3 +84,28 @@
     font-style: italic;
   }
 }
+
+@media (max-width: 767px) {
+  .note-overview {
+    gap: 0.6rem;
+    margin-top: 1rem;
+  }
+
+  .note-card {
+    padding: 0.75rem;
+
+    &::before {
+      border-top-width: 32px;
+      border-left-width: 32px;
+    }
+
+    &__heading {
+      margin-bottom: 0.35rem;
+      font-size: 1.15rem;
+    }
+
+    &__timestamp {
+      margin-top: 0.55rem;
+    }
+  }
+}

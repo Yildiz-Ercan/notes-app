@@ -50,16 +50,22 @@ if (localStorage.getItem("lastWelcomeDate") === today) {
   welcomeScreenEl.remove();
 } else {
   document.addEventListener("keydown", handleWelcome);
+  welcomeScreenEl.addEventListener("click", dismissWelcome);
 }
 
 function handleWelcome(event) {
-  if (event.key !== "Enter") return;
+  if (event.key === "Enter") {
+    dismissWelcome();
+  }
+}
 
+function dismissWelcome() {
   localStorage.setItem("lastWelcomeDate", today);
   welcomeScreenEl.classList.add("welcome-screen--hidden");
   playSound("startup");
 
   document.removeEventListener("keydown", handleWelcome);
+  welcomeScreenEl.removeEventListener("click", dismissWelcome);
 }
 
 function renderNote(note) {

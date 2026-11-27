@@ -14,6 +14,8 @@ const translations = {
       "Deine Notiz muss aus einem Titel und einer Beschreibung bestehen.",
     openNotes: "Notizliste öffnen",
     closeNotes: "Notizliste schließen",
+    welcomePressEnter: "Drücke Enter zum Fortfahren",
+    welcomeTapToContinue: "Tippe zum Fortfahren",
   },
 
   en: {
@@ -29,6 +31,8 @@ const translations = {
     missingFields: "Your note must consist of a title and a description.",
     openNotes: "Open notes list",
     closeNotes: "Close notes list",
+    welcomePressEnter: "Press Enter to continue",
+    welcomeTapToContinue: "Tap to continue",
   },
 };
 

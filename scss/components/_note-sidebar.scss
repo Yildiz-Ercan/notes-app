@@ -5,3 +5,48 @@
   border-right: 1px solid var(--border-color);
   background-color: var(--sidebar-bg);
 }
+
+.note-drawer-backdrop {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .note-sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    width: min(88vw, 22rem);
+    min-width: 0;
+    height: 100vh;
+    height: 100dvh;
+    transform: translateX(-100%);
+    visibility: hidden;
+    transition:
+      transform 0.25s ease,
+      visibility 0s linear 0.25s;
+  }
+
+  .note-sidebar--open {
+    transform: translateX(0);
+    visibility: visible;
+    transition-delay: 0s;
+  }
+
+  .note-sidebar--open + .note-drawer-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: block;
+    border: 0;
+    background: rgb(0 0 0 / 50%);
+    cursor: pointer;
+  }
+
+  .note-overview {
+    flex: 1;
+    min-height: 0;
+    max-height: none;
+  }
+}

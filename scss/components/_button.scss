@@ -38,3 +38,13 @@
     height: 1.4rem;
   }
 }
+
+.note-drawer-toggle {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .note-drawer-toggle {
+    display: flex;
+  }
+}

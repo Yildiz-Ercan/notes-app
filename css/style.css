@@ -33,6 +33,16 @@ body {
   background-color: var(--editor-bg);
 }
 
+@media (max-width: 767px) {
+  .app-container {
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+  }
+  .editor-container {
+    padding: 1rem;
+  }
+}
 :root {
   --app-font: Arial, Helvetica, sans-serif;
   --editor-bg: light-dark(#dce4ef, #000c18);
@@ -116,6 +126,45 @@ body {
   background-color: var(--sidebar-bg);
 }
 
+.note-drawer-backdrop {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .note-sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    width: min(88vw, 22rem);
+    min-width: 0;
+    height: 100vh;
+    height: 100dvh;
+    transform: translateX(-100%);
+    visibility: hidden;
+    transition: transform 0.25s ease, visibility 0s linear 0.25s;
+  }
+  .note-sidebar--open {
+    transform: translateX(0);
+    visibility: visible;
+    transition-delay: 0s;
+  }
+  .note-sidebar--open + .note-drawer-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: block;
+    border: 0;
+    background: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+  }
+  .note-overview {
+    flex: 1;
+    min-height: 0;
+    max-height: none;
+  }
+}
 /* Notizübersicht */
 .note-overview {
   display: flex;
@@ -229,6 +278,15 @@ body {
   height: 1.4rem;
 }
 
+.note-drawer-toggle {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .note-drawer-toggle {
+    display: flex;
+  }
+}
 .button--darkmode[active=true] {
   box-shadow: 0 0 15px yellow;
 }
@@ -298,6 +356,19 @@ body {
   opacity: 1;
 }
 
+@media (max-width: 767px) {
+  .editor__toolbar {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.75rem;
+  }
+  .editor__title {
+    flex: 1 1 0;
+    width: auto;
+    min-width: 0;
+    font-size: clamp(1.5rem, 7vw, 2.2rem);
+  }
+}
 .format-toolbar {
   display: flex;
   align-items: center;

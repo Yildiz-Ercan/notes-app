@@ -12,6 +12,8 @@ const translations = {
     emptyNote: "Du kannst keine leere Notiz speichern",
     missingFields:
       "Deine Notiz muss aus einem Titel und einer Beschreibung bestehen.",
+    openNotes: "Notizliste öffnen",
+    closeNotes: "Notizliste schließen",
   },
 
   en: {
@@ -25,6 +27,8 @@ const translations = {
     unsavedChanges: "Your changes have not been saved yet!",
     emptyNote: "You can't save empty notes!",
     missingFields: "Your note must consist of a title and a description.",
+    openNotes: "Open notes list",
+    closeNotes: "Close notes list",
   },
 };
 

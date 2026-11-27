@@ -4,8 +4,47 @@ const addNoteButtonEl = document.querySelector(".button--add-note");
 const popupEl = document.getElementById("popup");
 const popupMessage = document.getElementById("popup-message");
 const today = new Date().toLocaleDateString("en-CA");
+const noteSidebarEl = document.getElementById("note-sidebar");
+const noteDrawerToggleEl = document.querySelector(".note-drawer-toggle");
+const noteDrawerBackdropEl = document.querySelector(".note-drawer-backdrop");
 let popupTimer;
 let selectedNote = null;
+
+function setNoteDrawerOpen(isOpen) {
+  noteSidebarEl.classList.toggle("note-sidebar--open", isOpen);
+  noteDrawerToggleEl.setAttribute("aria-expanded", String(isOpen));
+
+  const labelKey = isOpen ? "closeNotes" : "openNotes";
+  noteDrawerToggleEl.setAttribute(
+    "aria-label",
+    translations[language][labelKey],
+  );
+
+  if (isOpen) {
+    addNoteButtonEl.focus();
+  } else {
+    noteDrawerToggleEl.focus();
+  }
+}
+
+noteDrawerToggleEl.addEventListener("click", () => {
+  const isOpen = noteSidebarEl.classList.contains("note-sidebar--open");
+  setNoteDrawerOpen(!isOpen);
+});
+
+noteDrawerBackdropEl.addEventListener("click", () => {
+  setNoteDrawerOpen(false);
+});
+
+document.addEventListener("keydown", (event) => {
+  if (
+    event.key === "Escape" &&
+    noteSidebarEl.classList.contains("note-sidebar--open")
+  ) {
+    setNoteDrawerOpen(false);
+    noteDrawerToggleEl.focus();
+  }
+});
 
 if (localStorage.getItem("lastWelcomeDate") === today) {
   welcomeScreenEl.remove();

@@ -16,3 +16,15 @@
   padding: 2rem 1.8rem 1.2rem;
   background-color: var(--editor-bg);
 }
+
+@media (max-width: 767px) {
+  .app-container {
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  .editor-container {
+    padding: 1rem;
+  }
+}

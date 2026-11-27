@@ -26,7 +26,7 @@
       </div>
     </section>
     <div class="app-container">
-      <aside class="note-sidebar">
+      <aside id="note-sidebar" class="note-sidebar">
         <button class="button button--add-note" onclick="addNewNote()">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -48,8 +48,38 @@
         <div class="note-overview"></div>
       </aside>
 
+      <button
+        type="button"
+        class="note-drawer-backdrop"
+        aria-label="Notizliste schließen"
+        data-i18n-aria-label="closeNotes"
+      ></button>
+
       <main class="editor-container">
         <div class="editor__toolbar">
+          <button
+            type="button"
+            class="button button--action note-drawer-toggle"
+            aria-label="Notizliste öffnen"
+            aria-controls="note-sidebar"
+            aria-expanded="false"
+            data-i18n-aria-label="openNotes"
+          >
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              class="button__icon"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+              />
+            </svg>
+          </button>
           <input
             type="text"
             id="note-heading"
